@@ -18,6 +18,15 @@
             addrArr.push(item.addresses)
         })
         console.log("checkData final array of addresses: ", addrArr );
+        console.log("checkData final array of businessess: ", bus );
+        let newArr = [];
+
+        addrArr.map (str =>{
+            console.log("mapping out the address string: ", typeof(str) );
+            //const bowstr = str.split(',');
+            newArr.push(str[0])
+            console.log("mapping strings to array: ", str[0] )
+        })
 
        /*   1) each array element contains a coma delimited string
             2) convert each string into an array
@@ -26,6 +35,28 @@
 
        */
 
+       console.log("Shazam: ", newArr );
+
+       /*compare the two arrays
+             map thru newArr comparing the string to the address of bus.
+       */
+
+    bus.map(business =>{
+    //    console.log("bus.map: ", business.address )
+    //    console.log("can I see the sddresses: ", newArr )
+        newArr.map(addr => {
+        //    console.log("newArr.map: ", addr.split(','))
+            const myArr = addr.split(',');
+            myArr.map( item =>{
+                console.log("single item: ", item ," compared to: ", business.address);
+                if (item == business.address ) {
+                    alert("We have a winner!!!")
+                }//end iff
+            })//end myArr map
+        })//newArr map
+    })//bus.map
+
+    return true
     /*    addrArr.map( addressStr => {
     //        console.log("Compare address: ", addressStr[0] );
             if ( addressStr[0].includes("1054a Springfield Ave")) {
