@@ -11,21 +11,21 @@
 
     //function to seperate and check each address against the business list
     async function checkData(addr,bus) {
-        console.log("checkData - addresses: ",addr," csv: ",bus  )
+    //    console.log("checkData - addresses: ",addr," csv: ",bus  )
         let addrArr = [];
         //seperate the addresses from the rest of the data
         addr.map( item => {
             addrArr.push(item.addresses)
         })
-        console.log("checkData final array of addresses: ", addrArr );
-        console.log("checkData final array of businessess: ", bus );
+    //    console.log("checkData final array of addresses: ", addrArr );
+    //    console.log("checkData final array of businessess: ", bus );
         let newArr = [];
 
         addrArr.map (str =>{
-            console.log("mapping out the address string: ", typeof(str) );
+            //console.log("mapping out the address string: ", typeof(str) );
             //const bowstr = str.split(',');
             newArr.push(str[0])
-            console.log("mapping strings to array: ", str[0] )
+            //console.log("mapping strings to array: ", str[0] )
         })
 
        /*   1) each array element contains a coma delimited string
@@ -35,7 +35,7 @@
 
        */
 
-       console.log("Shazam: ", newArr );
+      //console.log("Shazam: ", newArr );
 
        /*compare the two arrays
              map thru newArr comparing the string to the address of bus.
@@ -47,16 +47,28 @@
         newArr.map(addr => {
         //    console.log("newArr.map: ", addr.split(','))
             const myArr = addr.split(',');
+
             myArr.map( item =>{
-                console.log("single item: ", item ," compared to: ", business.address);
-                if (item == business.address ) {
-                    alert("We have a winner!!!")
-                }//end iff
+                //console.log("single item: ", item ," compared to: ", business.address);
+             
+                if ( (item !=="" ) && (business.address !== "")){
+                    item = "stinky";
+                    business.address = "stinky";
+
+                    if (item === business.address ) {
+                        console.log('item address 2: ', item , " and business address: ", business.address )
+                        let dataOBj = {
+                            name: business.name,
+                            address: business.address
+                        }
+                        return finishUp(dataObj)
+                    } 
+                }//end iffy 1
             })//end myArr map
         })//newArr map
     })//bus.map
 
-    return true
+    return "The End is Nigh!"
     /*    addrArr.map( addressStr => {
     //        console.log("Compare address: ", addressStr[0] );
             if ( addressStr[0].includes("1054a Springfield Ave")) {
