@@ -61,7 +61,9 @@
                             name: business.name,
                             address: business.address
                         }
-                        return finishUp(dataObj)
+                        const stinky = await finishUp(dataObj);
+
+                        return stinky;
                     } 
                 }//end iffy 1
             })//end myArr map
